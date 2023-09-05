@@ -6,15 +6,27 @@ const countDown = document.getElementById('countdown');
 const newYear = document.getElementById('newyear');
 const endSchool = document.getElementById('endschool');
 const startSchool = document.getElementById('startschool');
+const justin = document.getElementById('justin');
 const title = document.getElementById('title');
 let type = 0;
 
 const currentYear = new Date().getFullYear();
 const newYearTime = new Date(`January 01 ${currentYear + 1} 00:00:00`);
-const endSchoolTime = new Date(`June 20 ${currentYear} 00:00:00`);
-const startSchoolTime = new Date(`September 14 ${currentYear} 00:00:00`);
-const times = [newYearTime, endSchoolTime, startSchoolTime]
-const titles = ['New Year', 'Summer Break', 'Start Of School']
+let endSchoolTime = new Date(`June 20 ${currentYear} 00:00:00`);
+if (endSchoolTime > 0) {
+  endSchoolTime = new Date(`June 20 ${currentYear + 1} 00:00:00`);
+}
+let startSchoolTime = new Date(`September 11 ${currentYear} 00:00:00`);
+if (startSchoolTime < 0) {
+  startSchoolTime = new Date(`September 11 ${currentYear + 1} 00:00:00`);
+}
+let justinBirthday = new Date(`November 12 ${currentYear} 00:00:00`);
+if (justinBirthday < 0) {
+  justinBirthday = new Date(`November 12 ${currentYear + 1} 00:00:00`);
+}
+
+const times = [newYearTime, endSchoolTime, startSchoolTime, justinBirthday]
+const titles = ['New Year', 'Summer Break', 'Start Of School', `Justin's Bithday`]
 
 updateCountdown()
 
@@ -42,3 +54,4 @@ setInterval(updateCountdown, 1000);
 newYear.addEventListener('click', () => type = 0);
 endSchool.addEventListener('click', () => type = 1);
 startSchool.addEventListener('click', () => type = 2);
+justin.addEventListener('click', () => type = 3);

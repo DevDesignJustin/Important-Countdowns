@@ -85,6 +85,10 @@ h1 {
     border-radius: 0 7px 7px 0;
 }
 
+#startschool {
+  background-color: #7f6cea;
+}
+
 @media(max-width: 500px) {
     h1 {
         font-size: 45px;
